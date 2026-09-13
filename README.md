@@ -22,7 +22,7 @@
   <tr>
     <td align="center" colspan="4">
       <img alt="GitHub评级" src="https://img.shields.io/badge/Grade-SS-F84?style=for-the-badge&logo=github&logoColor=white" />
-      <img alt="GitHub分数" src="https://img.shields.io/badge/Score-3137-F84?style=for-the-badge&logo=github&logoColor=white" />
+      <img alt="GitHub分数" src="https://img.shields.io/badge/Score-3150-F84?style=for-the-badge&logo=github&logoColor=white" />
     </td>
   </tr>
   <tr>
@@ -36,7 +36,7 @@
       <img alt="活跃时间" src="https://img.shields.io/badge/Years_Active-5.6-2D9EF1?style=for-the-badge&logo=github&logoColor=white" />
     </td>
     <td align="center">
-      <img alt="贡献仓库" src="https://img.shields.io/badge/Contributed_To-2-2D9EF1?style=for-the-badge&logo=github&logoColor=white" />
+      <img alt="贡献仓库" src="https://img.shields.io/badge/Contributed_To-3-2D9EF1?style=for-the-badge&logo=github&logoColor=white" />
     </td>
   </tr>
   <tr>
@@ -44,24 +44,24 @@
       <img alt="仓库数量" src="https://img.shields.io/badge/Repositories-71-26A641?style=for-the-badge&logo=github&logoColor=white" />
     </td>
     <td align="center">
-      <img alt="获得的星标数" src="https://img.shields.io/badge/Stars-4158-FFD94C?style=for-the-badge&logo=github&logoColor=black" />
+      <img alt="获得的星标数" src="https://img.shields.io/badge/Stars-4166-FFD94C?style=for-the-badge&logo=github&logoColor=black" />
     </td>
     <td align="center">
-      <img alt="Fork数" src="https://img.shields.io/badge/Forked-556-26A641?style=for-the-badge&logo=github&logoColor=white" />
+      <img alt="Fork数" src="https://img.shields.io/badge/Forked-557-26A641?style=for-the-badge&logo=github&logoColor=white" />
     </td>
     <td align="center">
-      <img alt="被Watch数" src="https://img.shields.io/badge/Watched-4158-26A641?style=for-the-badge&logo=github&logoColor=white" />
+      <img alt="被Watch数" src="https://img.shields.io/badge/Watched-4166-26A641?style=for-the-badge&logo=github&logoColor=white" />
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img alt="提交数量" src="https://img.shields.io/badge/Commits-955-2188FF?style=for-the-badge&logo=git&logoColor=white" />
+      <img alt="提交数量" src="https://img.shields.io/badge/Commits-1016-2188FF?style=for-the-badge&logo=git&logoColor=white" />
     </td>
     <td align="center">
       <img alt="议题数量" src="https://img.shields.io/badge/Issues-68-F74D53?style=for-the-badge&logo=github&logoColor=white" />
     </td>
     <td align="center">
-      <img alt="拉取请求数量" src="https://img.shields.io/badge/Pull_Requests-54-A371F7?style=for-the-badge&logo=github&logoColor=white" />
+      <img alt="拉取请求数量" src="https://img.shields.io/badge/Pull_Requests-55-A371F7?style=for-the-badge&logo=github&logoColor=white" />
     </td>
     <td align="center">
       <img alt="主要语言" src="https://img.shields.io/badge/Top_Language-TypeScript-2188FF?style=for-the-badge&logo=github&logoColor=white" />
@@ -69,21 +69,21 @@
   </tr>
   <tr>
     <td align="center">
-      <img alt="每仓库提交" src="https://img.shields.io/badge/Commits_Per_Repo-13-2188FF?style=for-the-badge&logo=git&logoColor=white" />
+      <img alt="每仓库提交" src="https://img.shields.io/badge/Commits_Per_Repo-14-2188FF?style=for-the-badge&logo=git&logoColor=white" />
     </td>
     <td align="center">
-      <img alt="每仓库星标" src="https://img.shields.io/badge/Stars_Per_Repo-58.6-FFD94C?style=for-the-badge&logo=github&logoColor=black" />
+      <img alt="每仓库星标" src="https://img.shields.io/badge/Stars_Per_Repo-58.7-FFD94C?style=for-the-badge&logo=github&logoColor=black" />
     </td>
     <td align="center">
       <img alt="Issue关闭率" src="https://img.shields.io/badge/Issue_Close_Rate-93%25-F74D53?style=for-the-badge&logo=github&logoColor=white" />
     </td>
     <td align="center">
-      <img alt="PR合并率" src="https://img.shields.io/badge/PR_Merge_Rate-56%25-A371F7?style=for-the-badge&logo=github&logoColor=white" />
+      <img alt="PR合并率" src="https://img.shields.io/badge/PR_Merge_Rate-55%25-A371F7?style=for-the-badge&logo=github&logoColor=white" />
     </td>
   </tr>
 </table>
 
-<sup>📅 统计更新于: 2026/09/06</sup>
+<sup>📅 统计更新于: 2026/09/13</sup>
 
 </div>
 <!-- END_GITHUB_STATS -->`标记标识）。
