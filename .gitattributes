@@ -3,4 +3,5 @@
 dist/** -text -diff linguist-generated=true
 assets/fonts/*.otf binary linguist-vendored=true
 assets/fonts/*.ttf binary linguist-vendored=true
+assets/art/*.png binary
 assets/star-track/*.svg -diff linguist-generated=true

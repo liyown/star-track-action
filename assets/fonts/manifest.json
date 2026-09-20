@@ -48,5 +48,15 @@
     "file": "SourceSerif4Subhead-SemiboldIt.otf",
     "source": "https://raw.githubusercontent.com/adobe-fonts/source-serif/80d3f8894c09c937bebfa9011247d2e1c79fd6f4/OTF/SourceSerif4Subhead-SemiboldIt.otf",
     "sha256": "41c79f4f0f019ab1f3bfa63af52d1b33229ef0557b8ff70cd3d2dd29f0685d7b"
+  },
+  {
+    "file": "NotoSerifCJKsc-Regular.otf",
+    "source": "https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Serif/OTF/SimplifiedChinese/NotoSerifCJKsc-Regular.otf",
+    "sha256": "2a2eae2628df83556c54018c41e20fa532c1b862c5256ae8b3f23feb918d12ca"
+  },
+  {
+    "file": "SourceSerif4-Regular.otf",
+    "source": "https://raw.githubusercontent.com/adobe-fonts/source-serif/80d3f8894c09c937bebfa9011247d2e1c79fd6f4/OTF/SourceSerif4-Regular.otf",
+    "sha256": "edf160d0d584deee8a3bb2c3371b2a7624ca63580fbe02c57c1f4c91e84d8787"
   }
 ]

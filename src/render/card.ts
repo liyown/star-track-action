@@ -2,13 +2,14 @@ import type { Config } from '../config.js'
 import type { Snapshot } from '../types.js'
 import { Typography, escapeXml, round } from './fonts.js'
 import { starPaths } from './icons.js'
+import { artisticBackground } from './background.js'
 
 export type Theme = 'light' | 'dark'
 const palettes = {
   light: {
     bg: '#faf9f6',
     ink: '#19241e',
-    muted: '#666c72',
+    muted: '#59615e',
     accent: '#285f46',
     line: '#a5aca5',
     faint: '#e6ebe2',
@@ -158,7 +159,7 @@ export function renderCard(
   }
 
   if (!compact) {
-    text(`STAR TRACK / ${config.appearance.title}`, 64, 52, 17, p.muted, {
+    text(`STAR TRACK / ${config.appearance.title}`, 278, 52, 17, p.muted, {
       maxWidth: 900
     })
     text(
@@ -256,16 +257,16 @@ export function renderCard(
         repo.description || label('一个开源项目', 'An open-source project'),
         566,
         y,
-        21,
+        22,
         p.muted,
-        { maxWidth: 452 }
+        { prose: true, maxWidth: 452 }
       )
       rect(1058, y - 13, 12, 12, p.accent, 6)
       text(repo.language, 1086, y, 21, p.muted, { italic: true, maxWidth: 135 })
       out.push(
         `<g transform="translate(1254 ${y - 22})" fill="${p.accent}">${starPaths.map((d) => `<path d="${d}"/>`).join('')}</g>`
       )
-      text(number(repo.stars), 1376, y, 24, p.muted, {
+      text(number(repo.stars), 1376, y, 24, p.ink, {
         align: 'right',
         maxWidth: 88,
         shrink: true
@@ -302,19 +303,14 @@ export function renderCard(
       p.muted,
       { maxWidth: 265 }
     )
-    chart(390, y + 2, 730, 66)
-    text(
-      label('每天前进一步', 'ONE DAY AT A TIME.'),
-      1376,
-      y + 33,
-      18,
-      p.muted,
-      { align: 'right' }
-    )
-    text(label('让好的想法生长', 'KEEP BUILDING.'), 1376, y + 59, 18, p.muted, {
+    chart(390, y + 2, 670, 66)
+    text(label('每天前进一步', 'ONE DAY AT A TIME.'), 1270, y + 33, 18, p.ink, {
       align: 'right'
     })
-    line(1349, y + 76, 1376, y + 76, p.accent)
+    text(label('让好的想法生长', 'KEEP BUILDING.'), 1270, y + 59, 18, p.ink, {
+      align: 'right'
+    })
+    line(1243, y + 76, 1270, y + 76, p.accent)
     text(
       `Updated ${date} UTC · Powered by Star Track`,
       64,
@@ -324,15 +320,15 @@ export function renderCard(
     )
     text(
       'OPEN SOURCE MAKES A BRIGHTER TOMORROW',
-      1327,
+      1200,
       height - 36,
       12,
       p.muted,
       { align: 'right' }
     )
-    line(1350, height - 40, 1376, height - 40, p.accent)
+    line(1223, height - 40, 1249, height - 40, p.accent)
   } else {
-    text('STAR TRACK / OPEN SOURCE PROFILE', 32, 38, 13, p.muted)
+    text('STAR TRACK / OPEN SOURCE PROFILE', 160, 38, 13, p.muted)
     line(32, 58, 608, 58, p.accent)
     text(initials, 32, 126, 44, p.accent, { display: true, maxWidth: 120 })
     text(demo ? label('示例数据', 'DEMO DATA') : date, 608, 112, 14, p.muted, {
@@ -393,9 +389,9 @@ export function renderCard(
         repo.description || label('一个开源项目', 'An open-source project'),
         32,
         y + 70,
-        19,
+        20,
         p.muted,
-        { maxWidth: 576 }
+        { prose: true, maxWidth: 576 }
       )
       text(repo.language, 32, y + 96, 14, p.muted)
       line(32, y + 111, 608)
@@ -418,16 +414,9 @@ export function renderCard(
       12,
       p.muted
     )
-    text(`${date} UTC · Star Track`, 608, height - 17, 12, p.muted, {
-      align: 'right'
-    })
+    text(`${date} UTC · Star Track`, 32, height - 17, 12, p.muted)
   }
-  const paper =
-    theme === 'light'
-      ? ['#fffdf6', '#f7f3e9', '#eae5d8']
-      : ['#243c30', '#182a21', '#101c17']
-  const backgroundDefs = `<radialGradient id="paper-light" cx="24%" cy="12%" r="110%"><stop offset="0" stop-color="${paper[0]}"/><stop offset=".55" stop-color="${paper[1]}"/><stop offset="1" stop-color="${paper[2]}"/></radialGradient><filter id="paper-grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" stitchTiles="stitch" seed="17"/><feColorMatrix type="saturate" values="0"/></filter>`
-  const background = `<rect width="${width}" height="${height}" fill="url(#paper-light)"/><rect width="${width}" height="${height}" filter="url(#paper-grain)" opacity="${theme === 'light' ? '.065' : '.045'}"/>`
+  const background = artisticBackground(width, height, theme === 'dark')
   const description = `${name}. ${snapshot.rating.grade}, ${snapshot.rating.score} points. ${snapshot.totals.stars} stars across ${snapshot.totals.repositories} public repositories. ${snapshot.profile.contributions} personal contributions in the past 365 days. ${snapshot.featured.map((repo) => `${repo.fullName}: ${repo.description}`).join('; ')}`
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title description"><title id="title">${escapeXml(`${name} · Star Track${demo ? ' · Demo data' : ''}`)}</title><desc id="description">${escapeXml(description)}</desc><defs>${backgroundDefs}${type.defs()}</defs><rect width="${width}" height="${height}" fill="${p.bg}"/>${background}${out.join('')}</svg>\n`
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title description"><title id="title">${escapeXml(`${name} · Star Track${demo ? ' · Demo data' : ''}`)}</title><desc id="description">${escapeXml(description)}</desc><defs>${background.definitions}${type.defs()}</defs><rect width="${width}" height="${height}" fill="${p.bg}"/>${background.content}${out.join('')}</svg>\n`
 }

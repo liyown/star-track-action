@@ -373,7 +373,11 @@ test('SVG is deterministic, self-contained, escaped and renders without system f
     for (const compact of [false, true]) {
       const svg = renderCard(demoSnapshot, config, theme, compact)
       assert.equal(svg, renderCard(demoSnapshot, config, theme, compact))
-      assert.ok(!/<text\b|<script\b|<foreignObject\b|<image\b/.test(svg))
+      assert.ok(!/<text\b|<script\b|<foreignObject\b/.test(svg))
+      assert.match(
+        svg,
+        /<image\b[^>]*href="data:image\/png;base64,[A-Za-z0-9+/=]+"/
+      )
       assert.ok(!/href="https?:/.test(svg))
       assert.match(svg, /Long &lt;Name&gt; &amp; 中文/)
       const result = new Resvg(svg, {

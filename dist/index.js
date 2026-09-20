@@ -70822,32 +70822,39 @@ class Typography {
     italic = load('SourceSerif4Subhead-It.otf');
     italicBold = load('SourceSerif4Subhead-SemiboldIt.otf');
     chineseSerif = load('NotoSerifCJKsc-SemiBold.otf');
-    font(text, display, bold = false, italic = false) {
-        const preferred = italic
-            ? bold
-                ? this.italicBold
-                : this.italic
-            : display
-                ? this.serif
-                : bold
-                    ? this.latinBold
-                    : this.latin;
+    prose = load('SourceSerif4-Regular.otf');
+    chineseProse = load('NotoSerifCJKsc-Regular.otf');
+    font(text, display, bold = false, italic = false, prose = false) {
+        const preferred = prose
+            ? this.prose
+            : italic
+                ? bold
+                    ? this.italicBold
+                    : this.italic
+                : display
+                    ? this.serif
+                    : bold
+                        ? this.latinBold
+                        : this.latin;
         return [...text].every((char) => preferred.hasGlyphForCodePoint(char.codePointAt(0)))
             ? preferred
-            : display
-                ? this.chineseSerif
-                : this.sans;
+            : prose
+                ? this.chineseProse
+                : display
+                    ? this.chineseSerif
+                    : this.sans;
     }
-    width(text, size, display = false, bold = false, italic = false) {
-        const font = this.font(text, display, bold, italic);
+    width(text, size, display = false, bold = false, italic = false, prose = false) {
+        const font = this.font(text, display, bold, italic, prose);
         return (font.layout(text).advanceWidth * size) / font.unitsPerEm;
     }
-    fit(text, size, maxWidth, display = false, bold = false, italic = false) {
-        if (this.width(text, size, display, bold, italic) <= maxWidth)
+    fit(text, size, maxWidth, display = false, bold = false, italic = false, prose = false) {
+        if (this.width(text, size, display, bold, italic, prose) <= maxWidth)
             return text;
         const chars = [...text];
         while (chars.length &&
-            this.width(`${chars.join('')}…`, size, display, bold, italic) > maxWidth)
+            this.width(`${chars.join('')}…`, size, display, bold, italic, prose) >
+                maxWidth)
             chars.pop();
         return `${chars.join('')}…`;
     }
@@ -70856,13 +70863,14 @@ class Typography {
         const display = options.display ?? false;
         const bold = options.bold ?? false;
         const italic = options.italic ?? false;
+        const prose = options.prose ?? false;
         if (options.maxWidth) {
             if (options.shrink)
                 size = Math.max(size * 0.55, Math.min(size, (size * options.maxWidth) /
-                    Math.max(1, this.width(text, size, display, bold, italic))));
-            text = this.fit(text, size, options.maxWidth, display, bold, italic);
+                    Math.max(1, this.width(text, size, display, bold, italic, prose))));
+            text = this.fit(text, size, options.maxWidth, display, bold, italic, prose);
         }
-        const font = this.font(text, display, bold, italic);
+        const font = this.font(text, display, bold, italic, prose);
         const run = font.layout(text);
         const scale = size / font.unitsPerEm;
         if (options.align === 'right')
@@ -70872,7 +70880,7 @@ class Typography {
         for (let i = 0; i < run.glyphs.length; i++) {
             const glyph = run.glyphs[i];
             const position = run.positions[i];
-            const id = `${font === this.italicBold ? 'j' : font === this.italic ? 'i' : font === this.serif ? 'd' : font === this.chineseSerif ? 'c' : font === this.latinBold ? 'b' : font === this.latin ? 'l' : 's'}${glyph.id}`;
+            const id = `${font === this.prose ? 'p' : font === this.chineseProse ? 'q' : font === this.italicBold ? 'j' : font === this.italic ? 'i' : font === this.serif ? 'd' : font === this.chineseSerif ? 'c' : font === this.latinBold ? 'b' : font === this.latin ? 'l' : 's'}${glyph.id}`;
             if (!this.definitions.has(id))
                 this.definitions.set(id, `<path id="${id}" d="${glyph.path.toSVG()}"/>`);
             parts.push(`<use href="#${id}" transform="translate(${round(x + (offset + position.xOffset) * scale)} ${round(y - position.yOffset * scale)}) scale(${round(scale)} ${round(-scale)})"/>`);
@@ -70893,11 +70901,30 @@ const starPaths = [
     'M12 .25a.75.75 0 0 1 .673.418l3.058 6.197 6.839.994a.75.75 0 0 1 .415 1.279l-4.948 4.823 1.168 6.811a.751.751 0 0 1-1.088.791L12 18.347l-6.117 3.216a.75.75 0 0 1-1.088-.79l1.168-6.812-4.948-4.823a.75.75 0 0 1 .416-1.28l6.838-.993L11.328.668A.75.75 0 0 1 12 .25Zm0 2.445L9.44 7.882a.75.75 0 0 1-.565.41l-5.725.832 4.143 4.038a.748.748 0 0 1 .215.664l-.978 5.702 5.121-2.692a.75.75 0 0 1 .698 0l5.12 2.692-.977-5.702a.748.748 0 0 1 .215-.664l4.143-4.038-5.725-.831a.75.75 0 0 1-.565-.41L12 2.694Z'
 ];
 
+let encodedArtwork;
+/** Embed the bundled artwork so GitHub never needs a second image request. */
+function artisticBackground(width, height, dark) {
+    if (!encodedArtwork) {
+        const bundled = new URL('../assets/art/profile-background.png', import.meta.url);
+        const source = fs.existsSync(bundled)
+            ? bundled
+            : new URL('../../assets/art/profile-background.png', import.meta.url);
+        encodedArtwork = fs.readFileSync(source).toString('base64');
+    }
+    const definitions = dark
+        ? '<filter id="art-night" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="-.08 -.16 -.03 0 .30  -.10 -.25 -.04 0 .45  -.06 -.18 -.03 0 .32  0 0 0 1 0"/></filter>'
+        : '';
+    const bleedX = width * 0.105;
+    const bleedY = height * 0.117;
+    const content = `<image x="${-bleedX}" y="${-bleedY}" width="${width + bleedX * 2}" height="${height + bleedY * 2}" preserveAspectRatio="none" href="data:image/png;base64,${encodedArtwork}"${dark ? ' filter="url(#art-night)"' : ''}/>`;
+    return { definitions, content };
+}
+
 const palettes = {
     light: {
         bg: '#faf9f6',
         ink: '#19241e',
-        muted: '#666c72',
+        muted: '#59615e',
         accent: '#285f46',
         line: '#a5aca5',
         faint: '#e6ebe2',
@@ -70982,7 +71009,7 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
         });
     }
     if (!compact) {
-        text(`STAR TRACK / ${config.appearance.title}`, 64, 52, 17, p.muted, {
+        text(`STAR TRACK / ${config.appearance.title}`, 278, 52, 17, p.muted, {
             maxWidth: 900
         });
         text(`${demo ? label('示例数据 · ', 'DEMO · ') : ''}${date}`, 1376, 52, 17, p.muted, { align: 'right' });
@@ -71063,11 +71090,11 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
                 maxWidth: 366 - ownerWidth
             });
             line(536, y - 21, 536, y + 6, p.accent);
-            text(repo.description || label('一个开源项目', 'An open-source project'), 566, y, 21, p.muted, { maxWidth: 452 });
+            text(repo.description || label('一个开源项目', 'An open-source project'), 566, y, 22, p.muted, { prose: true, maxWidth: 452 });
             rect(1058, y - 13, 12, 12, p.accent, 6);
             text(repo.language, 1086, y, 21, p.muted, { italic: true, maxWidth: 135 });
             out.push(`<g transform="translate(1254 ${y - 22})" fill="${p.accent}">${starPaths.map((d) => `<path d="${d}"/>`).join('')}</g>`);
-            text(number(repo.stars), 1376, y, 24, p.muted, {
+            text(number(repo.stars), 1376, y, 24, p.ink, {
                 align: 'right',
                 maxWidth: 88,
                 shrink: true
@@ -71082,18 +71109,20 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
         });
         line(64, y + 62, 93, y + 62, p.accent);
         text(label(`过去12周 · ${number(activityTotal)} 次贡献`, `12 weeks · ${number(activityTotal)} contributions`), 104, y + 68, 17, p.muted, { maxWidth: 265 });
-        chart(390, y + 2, 730, 66);
-        text(label('每天前进一步', 'ONE DAY AT A TIME.'), 1376, y + 33, 18, p.muted, { align: 'right' });
-        text(label('让好的想法生长', 'KEEP BUILDING.'), 1376, y + 59, 18, p.muted, {
+        chart(390, y + 2, 670, 66);
+        text(label('每天前进一步', 'ONE DAY AT A TIME.'), 1270, y + 33, 18, p.ink, {
             align: 'right'
         });
-        line(1349, y + 76, 1376, y + 76, p.accent);
+        text(label('让好的想法生长', 'KEEP BUILDING.'), 1270, y + 59, 18, p.ink, {
+            align: 'right'
+        });
+        line(1243, y + 76, 1270, y + 76, p.accent);
         text(`Updated ${date} UTC · Powered by Star Track`, 64, height - 36, 14, p.muted);
-        text('OPEN SOURCE MAKES A BRIGHTER TOMORROW', 1327, height - 36, 12, p.muted, { align: 'right' });
-        line(1350, height - 40, 1376, height - 40, p.accent);
+        text('OPEN SOURCE MAKES A BRIGHTER TOMORROW', 1200, height - 36, 12, p.muted, { align: 'right' });
+        line(1223, height - 40, 1249, height - 40, p.accent);
     }
     else {
-        text('STAR TRACK / OPEN SOURCE PROFILE', 32, 38, 13, p.muted);
+        text('STAR TRACK / OPEN SOURCE PROFILE', 160, 38, 13, p.muted);
         line(32, 58, 608, 58, p.accent);
         text(initials, 32, 126, 44, p.accent, { display: true, maxWidth: 120 });
         text(demo ? label('示例数据', 'DEMO DATA') : date, 608, 112, 14, p.muted, {
@@ -71143,7 +71172,7 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
                 align: 'right',
                 maxWidth: 158
             });
-            text(repo.description || label('一个开源项目', 'An open-source project'), 32, y + 70, 19, p.muted, { maxWidth: 576 });
+            text(repo.description || label('一个开源项目', 'An open-source project'), 32, y + 70, 20, p.muted, { prose: true, maxWidth: 576 });
             text(repo.language, 32, y + 96, 14, p.muted);
             line(32, y + 111, 608);
         });
@@ -71153,17 +71182,11 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
         text(label('持续构建', 'In the making'), 32, y + 31, 20, p.ink);
         chart(225, y, 383, 43);
         text(`12 weeks · ${number(activityTotal)} contributions`, 32, y + 66, 12, p.muted);
-        text(`${date} UTC · Star Track`, 608, height - 17, 12, p.muted, {
-            align: 'right'
-        });
+        text(`${date} UTC · Star Track`, 32, height - 17, 12, p.muted);
     }
-    const paper = theme === 'light'
-        ? ['#fffdf6', '#f7f3e9', '#eae5d8']
-        : ['#243c30', '#182a21', '#101c17'];
-    const backgroundDefs = `<radialGradient id="paper-light" cx="24%" cy="12%" r="110%"><stop offset="0" stop-color="${paper[0]}"/><stop offset=".55" stop-color="${paper[1]}"/><stop offset="1" stop-color="${paper[2]}"/></radialGradient><filter id="paper-grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" stitchTiles="stitch" seed="17"/><feColorMatrix type="saturate" values="0"/></filter>`;
-    const background = `<rect width="${width}" height="${height}" fill="url(#paper-light)"/><rect width="${width}" height="${height}" filter="url(#paper-grain)" opacity="${theme === 'light' ? '.065' : '.045'}"/>`;
+    const background = artisticBackground(width, height, theme === 'dark');
     const description = `${name}. ${snapshot.rating.grade}, ${snapshot.rating.score} points. ${snapshot.totals.stars} stars across ${snapshot.totals.repositories} public repositories. ${snapshot.profile.contributions} personal contributions in the past 365 days. ${snapshot.featured.map((repo) => `${repo.fullName}: ${repo.description}`).join('; ')}`;
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title description"><title id="title">${escapeXml(`${name} · Star Track${demo ? ' · Demo data' : ''}`)}</title><desc id="description">${escapeXml(description)}</desc><defs>${backgroundDefs}${type.defs()}</defs><rect width="${width}" height="${height}" fill="${p.bg}"/>${background}${out.join('')}</svg>\n`;
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title description"><title id="title">${escapeXml(`${name} · Star Track${demo ? ' · Demo data' : ''}`)}</title><desc id="description">${escapeXml(description)}</desc><defs>${background.definitions}${type.defs()}</defs><rect width="${width}" height="${height}" fill="${p.bg}"/>${background.content}${out.join('')}</svg>\n`;
 }
 
 const BEGIN = '<!-- BEGIN_GITHUB_STATS -->';

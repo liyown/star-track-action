@@ -148,7 +148,10 @@ output:
 
 README 自动嵌入 `<picture>`，按 `prefers-color-scheme` 和 `max-width: 640px`
 选择主题和布局。不支持 `<picture>`
-的阅读器会显示默认桌面图。SVG 内的文字转换为矢量轮廓，不依赖浏览者安装字体或访问字体 CDN。头像与外部图片不会被加载；左侧标识使用可配置的姓名缩写。
+的阅读器会显示默认桌面图。SVG 内的文字转换为矢量轮廓，不依赖浏览者安装字体或访问字体 CDN。艺术背景以 PNG 内嵌于 SVG，不加载外部图片；左侧标识使用可配置的姓名缩写。
+
+背景采用墨绿笔触、暖赭色块与纸张肌理；艺术元素自然收在角落，正文使用底图本身的留白。底图随项目固定保存，运行 Action 时不调用图片生成服务。由于内嵌完整背景，单张 SVG 约 3.4
+MB；来源和生成提示词见 [背景素材说明](assets/art/README.md)。
 
 完整图片中的项目行不可单独点击，因此卡片下方会输出仓库链接，同时提供
 `alt`、SVG 标题/说明和可展开的文字报告。中文、拉丁文及常见 CJK 字符由随包字体支持；Emoji 和未覆盖文字不属于当前字体支持范围。
@@ -268,8 +271,8 @@ npm run preview -- --live
 
 ## 字体与许可证
 
-代码采用 [MIT](LICENSE)。随包的 Source Serif 4 Display / Subhead、Inter、Noto
-Serif CJK SC 和 Noto Sans CJK SC 采用 SIL Open Font
+代码采用 [MIT](LICENSE)。随包的 Source Serif 4（含 Display /
+Subhead）、Inter、Noto Serif CJK SC 和 Noto Sans CJK SC 采用 SIL Open Font
 License；许可证、固定的下载来源与 SHA-256 见
 [assets/fonts](assets/fonts)。星标图标来自 MIT 许可的 GitHub Octicons，许可证见
 [assets/icons](assets/icons)。
