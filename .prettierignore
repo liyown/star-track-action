@@ -1,5 +1,7 @@
-.DS_Store
-.licenses/
-dist/
 node_modules/
+dist/
+preview/
+assets/fonts/
+assets/star-track/
 coverage/
+package-lock.json

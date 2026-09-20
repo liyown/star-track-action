@@ -1,66 +1,84 @@
-name: GitHub Star Stats
-description: Creates a card in README showing star, commit, issue and contribution statistics
-author: GitHub User
-
-# Add your action's branding here. This will appear on the GitHub Marketplace.
+name: Star Track
+description:
+  Generate an editorial SVG profile with GitHub statistics, selected projects
+  and impact ratings.
+author: Liuyaowen
 branding:
   icon: star
-  color: yellow
-
-# Define your inputs here.
+  color: green
 inputs:
   github_token:
-    description: 'GitHub token to access API'
+    description:
+      GitHub API token; checkout credentials are used separately for pushing.
     required: true
+  config_path:
+    description: Optional YAML path. Auto-detects star-track.yml when omitted.
+    required: false
   username:
-    description: 'GitHub username'
-    required: true
+    description:
+      GitHub user. Overrides username in YAML; required when YAML does not
+      supply it.
+    required: false
   scope:
-    description: 'Scope of statistics: "personal" for personal repositories only, "all" for all repositories including organizations'
+    description:
+      personal or all. Overrides YAML; defaults to personal without
+      configuration.
     required: false
-    default: 'personal'
   readme_path:
-    description: 'Path to the README file to update'
+    description:
+      README path relative to the workspace. Overrides YAML output.readme.
     required: false
-    default: 'README.md'
   card_title:
-    description: 'Title of the statistics card'
+    description: Card eyebrow title. Overrides YAML appearance.title.
     required: false
-    default: 'GitHub Stats'
-
-# Define your outputs here.
+  auto_commit:
+    description: Commit and push generated files using checkout credentials.
+    required: false
+    default: 'true'
 outputs:
   stars_count:
-    description: 'Total number of stars received'
+    description: Stars across selected public repositories.
   commits_count:
-    description: 'Total number of commits'
+    description: Personal commit contributions in the past 365 days (v2 scope).
+  contributions_count:
+    description: Personal contributions in the past 365 days.
   issues_count:
-    description: 'Total number of issues created'
+    description: Issues by all authors in selected public repositories.
   prs_count:
-    description: 'Total number of pull requests'
+    description: PRs by all authors in selected public repositories.
   repositories_count:
-    description: 'Total number of repositories'
+    description: Selected public repository count, excluding forks by default.
+  watchers_count:
+    description: Actual repository subscribers, not stars.
   followers_count:
-    description: 'Number of followers'
+    description: User followers.
   following_count:
-    description: 'Number of accounts followed'
+    description: Accounts the user follows.
   contributed_to_count:
-    description: 'Number of repositories contributed to'
+    description:
+      GitHub repositoriesContributedTo count (public, including own
+      repositories).
   top_language:
-    description: 'Most used programming language'
+    description: Most frequent repository primary language.
   days_active:
-    description: 'Number of days since first repository'
+    description: Days since account creation (v2 scope), not days with activity.
   developer_grade:
-    description: 'Developer grade (D- to SSS)'
+    description: Open-source impact grade from D- to SSS.
   developer_score:
-    description: 'Developer score (numeric value)'
+    description: Open-source impact score, formula v2.
   issue_close_rate:
-    description: 'Percentage of issues closed'
+    description: Closed issues divided by all issues, rounded percentage.
   pr_merge_rate:
-    description: 'Percentage of pull requests merged'
+    description: Merged PRs divided by all PRs, rounded percentage.
+  card_path:
+    description: Generated desktop light SVG path relative to workspace.
+  stats_path:
+    description: Generated statistics JSON path relative to workspace.
+  changed:
+    description: Whether any generated file or README changed.
   execution_time:
-    description: 'Time taken to execute the action in seconds'
-
+    description:
+      Total execution time including rendering and optional push, in seconds.
 runs:
-  using: node20
+  using: node24
   main: dist/index.js

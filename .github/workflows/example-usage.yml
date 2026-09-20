@@ -1,33 +1,27 @@
-name: 生成GitHub统计卡片
-
+name: Update Star Track profile
 on:
   schedule:
-    - cron: '0 0 * * 0'  # 每周日运行
-  workflow_dispatch:     # 允许手动触发
-
+    - cron: '0 1 * * 0'
+  workflow_dispatch:
 permissions:
-  contents: write        # 需要写入权限来更新 README
-
+  contents: write
+concurrency:
+  group: star-track-profile
+  cancel-in-progress: false
 jobs:
-  generate-stats:
+  generate:
     runs-on: ubuntu-latest
-    name: 生成GitHub统计数据卡片
     steps:
-      - name: 检出代码
-        uses: actions/checkout@v4
-        
-      - name: 生成GitHub统计卡片
+      - uses: actions/checkout@v6
+      - name: Generate profile
         id: stats
         uses: ./
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          username: ${{ github.repository_owner }}
-          scope: 'all'           # 包括个人和组织仓库
-          readme_path: 'README.md'
-          card_title: 'GitHub 统计数据'
-      
-      - name: 显示生成的统计数据
-        run: |
-          echo "✨ 统计完成! 等级: ${{ steps.stats.outputs.developer_grade }}, 分数: ${{ steps.stats.outputs.developer_score }}"
-          echo "⭐ 星标总数: ${{ steps.stats.outputs.stars_count }}"
-          echo "🔄 处理时间: ${{ steps.stats.outputs.execution_time }} 秒" 
+          config_path: star-track.yml
+      - name: Report
+        env:
+          GRADE: ${{ steps.stats.outputs.developer_grade }}
+          SCORE: ${{ steps.stats.outputs.developer_score }}
+          STARS: ${{ steps.stats.outputs.stars_count }}
+        run: echo "Star Track — $GRADE / $SCORE points / $STARS stars"

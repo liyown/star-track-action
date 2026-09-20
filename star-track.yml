@@ -1,0 +1,32 @@
+username: liyown
+scope: all
+
+profile:
+  name: Liuyaowen
+  initials: LY
+  headline: 把想法，做成开源作品。
+
+# Discover public organization memberships by default.
+# For organizations with private membership, list their login names explicitly:
+# organizations:
+#   - your-organization
+
+# Empty means the three most-starred eligible projects. Set a list to curate it.
+featured: []
+
+repositories:
+  include_forks: false
+  include_archived: true
+  exclude: []
+
+appearance:
+  theme: auto
+  locale: zh-CN
+  title: OPEN SOURCE PROFILE
+
+rating:
+  enabled: true
+
+output:
+  directory: assets/star-track
+  readme: README.md

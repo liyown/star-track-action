@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "noEmit": true },
+  "include": ["src", "script/*.ts", "test"],
+  "exclude": ["dist", "node_modules", "preview"]
+}
