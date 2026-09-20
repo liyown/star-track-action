@@ -38,10 +38,25 @@ export class Typography {
   private latin = load('Inter.ttf').getVariation({ opsz: 14, wght: 450 })
   private latinBold = load('Inter.ttf').getVariation({ opsz: 14, wght: 700 })
   private serif = load('SourceSerif4Display-Black.otf')
+  private italic = load('SourceSerif4Subhead-It.otf')
+  private italicBold = load('SourceSerif4Subhead-SemiboldIt.otf')
   private chineseSerif = load('NotoSerifCJKsc-SemiBold.otf')
 
-  private font(text: string, display: boolean, bold = false): Font {
-    const preferred = display ? this.serif : bold ? this.latinBold : this.latin
+  private font(
+    text: string,
+    display: boolean,
+    bold = false,
+    italic = false
+  ): Font {
+    const preferred = italic
+      ? bold
+        ? this.italicBold
+        : this.italic
+      : display
+        ? this.serif
+        : bold
+          ? this.latinBold
+          : this.latin
     return [...text].every((char) =>
       preferred.hasGlyphForCodePoint(char.codePointAt(0)!)
     )
@@ -51,8 +66,14 @@ export class Typography {
         : this.sans
   }
 
-  width(text: string, size: number, display = false, bold = false): number {
-    const font = this.font(text, display, bold)
+  width(
+    text: string,
+    size: number,
+    display = false,
+    bold = false,
+    italic = false
+  ): number {
+    const font = this.font(text, display, bold, italic)
     return (font.layout(text).advanceWidth * size) / font.unitsPerEm
   }
 
@@ -61,13 +82,14 @@ export class Typography {
     size: number,
     maxWidth: number,
     display = false,
-    bold = false
+    bold = false,
+    italic = false
   ): string {
-    if (this.width(text, size, display, bold) <= maxWidth) return text
+    if (this.width(text, size, display, bold, italic) <= maxWidth) return text
     const chars = [...text]
     while (
       chars.length &&
-      this.width(`${chars.join('')}…`, size, display, bold) > maxWidth
+      this.width(`${chars.join('')}…`, size, display, bold, italic) > maxWidth
     )
       chars.pop()
     return `${chars.join('')}…`
@@ -82,6 +104,7 @@ export class Typography {
     options: {
       display?: boolean
       bold?: boolean
+      italic?: boolean
       maxWidth?: number
       align?: 'left' | 'right'
       shrink?: boolean
@@ -90,6 +113,7 @@ export class Typography {
     text = text.replace(/[\x00-\x1f\x7f]/g, ' ')
     const display = options.display ?? false
     const bold = options.bold ?? false
+    const italic = options.italic ?? false
     if (options.maxWidth) {
       if (options.shrink)
         size = Math.max(
@@ -97,12 +121,12 @@ export class Typography {
           Math.min(
             size,
             (size * options.maxWidth) /
-              Math.max(1, this.width(text, size, display, bold))
+              Math.max(1, this.width(text, size, display, bold, italic))
           )
         )
-      text = this.fit(text, size, options.maxWidth, display, bold)
+      text = this.fit(text, size, options.maxWidth, display, bold, italic)
     }
-    const font = this.font(text, display, bold)
+    const font = this.font(text, display, bold, italic)
     const run = font.layout(text)
     const scale = size / font.unitsPerEm
     if (options.align === 'right') x -= run.advanceWidth * scale
@@ -111,7 +135,7 @@ export class Typography {
     for (let i = 0; i < run.glyphs.length; i++) {
       const glyph = run.glyphs[i]
       const position = run.positions[i]
-      const id = `${font === this.serif ? 'd' : font === this.chineseSerif ? 'c' : font === this.latinBold ? 'b' : font === this.latin ? 'l' : 's'}${glyph.id}`
+      const id = `${font === this.italicBold ? 'j' : font === this.italic ? 'i' : font === this.serif ? 'd' : font === this.chineseSerif ? 'c' : font === this.latinBold ? 'b' : font === this.latin ? 'l' : 's'}${glyph.id}`
       if (!this.definitions.has(id))
         this.definitions.set(id, `<path id="${id}" d="${glyph.path.toSVG()}"/>`)
       parts.push(

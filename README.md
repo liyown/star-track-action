@@ -268,8 +268,8 @@ npm run preview -- --live
 
 ## 字体与许可证
 
-代码采用 [MIT](LICENSE)。随包的 Source Serif 4 Display、Inter、Noto Serif CJK
-SC 和 Noto Sans CJK SC 采用 SIL Open Font
+代码采用 [MIT](LICENSE)。随包的 Source Serif 4 Display / Subhead、Inter、Noto
+Serif CJK SC 和 Noto Sans CJK SC 采用 SIL Open Font
 License；许可证、固定的下载来源与 SHA-256 见
 [assets/fonts](assets/fonts)。星标图标来自 MIT 许可的 GitHub Octicons，许可证见
 [assets/icons](assets/icons)。

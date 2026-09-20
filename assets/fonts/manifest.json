@@ -38,5 +38,15 @@
     "file": "SourceSerif4Display-Black.otf",
     "source": "https://raw.githubusercontent.com/adobe-fonts/source-serif/80d3f8894c09c937bebfa9011247d2e1c79fd6f4/OTF/SourceSerif4Display-Black.otf",
     "sha256": "da9e983171e47d5f87a66628438bd3d192e45db14b38e9a50502f5d0e648147a"
+  },
+  {
+    "file": "SourceSerif4Subhead-It.otf",
+    "source": "https://raw.githubusercontent.com/adobe-fonts/source-serif/80d3f8894c09c937bebfa9011247d2e1c79fd6f4/OTF/SourceSerif4Subhead-It.otf",
+    "sha256": "3435a97741d90c9d844f8129ae2408890e0f50d848408237122bc88260fe1fad"
+  },
+  {
+    "file": "SourceSerif4Subhead-SemiboldIt.otf",
+    "source": "https://raw.githubusercontent.com/adobe-fonts/source-serif/80d3f8894c09c937bebfa9011247d2e1c79fd6f4/OTF/SourceSerif4Subhead-SemiboldIt.otf",
+    "sha256": "41c79f4f0f019ab1f3bfa63af52d1b33229ef0557b8ff70cd3d2dd29f0685d7b"
   }
 ]

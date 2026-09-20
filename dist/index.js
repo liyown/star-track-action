@@ -70819,25 +70819,35 @@ class Typography {
     latin = load('Inter.ttf').getVariation({ opsz: 14, wght: 450 });
     latinBold = load('Inter.ttf').getVariation({ opsz: 14, wght: 700 });
     serif = load('SourceSerif4Display-Black.otf');
+    italic = load('SourceSerif4Subhead-It.otf');
+    italicBold = load('SourceSerif4Subhead-SemiboldIt.otf');
     chineseSerif = load('NotoSerifCJKsc-SemiBold.otf');
-    font(text, display, bold = false) {
-        const preferred = display ? this.serif : bold ? this.latinBold : this.latin;
+    font(text, display, bold = false, italic = false) {
+        const preferred = italic
+            ? bold
+                ? this.italicBold
+                : this.italic
+            : display
+                ? this.serif
+                : bold
+                    ? this.latinBold
+                    : this.latin;
         return [...text].every((char) => preferred.hasGlyphForCodePoint(char.codePointAt(0)))
             ? preferred
             : display
                 ? this.chineseSerif
                 : this.sans;
     }
-    width(text, size, display = false, bold = false) {
-        const font = this.font(text, display, bold);
+    width(text, size, display = false, bold = false, italic = false) {
+        const font = this.font(text, display, bold, italic);
         return (font.layout(text).advanceWidth * size) / font.unitsPerEm;
     }
-    fit(text, size, maxWidth, display = false, bold = false) {
-        if (this.width(text, size, display, bold) <= maxWidth)
+    fit(text, size, maxWidth, display = false, bold = false, italic = false) {
+        if (this.width(text, size, display, bold, italic) <= maxWidth)
             return text;
         const chars = [...text];
         while (chars.length &&
-            this.width(`${chars.join('')}…`, size, display, bold) > maxWidth)
+            this.width(`${chars.join('')}…`, size, display, bold, italic) > maxWidth)
             chars.pop();
         return `${chars.join('')}…`;
     }
@@ -70845,13 +70855,14 @@ class Typography {
         text = text.replace(/[\x00-\x1f\x7f]/g, ' ');
         const display = options.display ?? false;
         const bold = options.bold ?? false;
+        const italic = options.italic ?? false;
         if (options.maxWidth) {
             if (options.shrink)
                 size = Math.max(size * 0.55, Math.min(size, (size * options.maxWidth) /
-                    Math.max(1, this.width(text, size, display, bold))));
-            text = this.fit(text, size, options.maxWidth, display, bold);
+                    Math.max(1, this.width(text, size, display, bold, italic))));
+            text = this.fit(text, size, options.maxWidth, display, bold, italic);
         }
-        const font = this.font(text, display, bold);
+        const font = this.font(text, display, bold, italic);
         const run = font.layout(text);
         const scale = size / font.unitsPerEm;
         if (options.align === 'right')
@@ -70861,7 +70872,7 @@ class Typography {
         for (let i = 0; i < run.glyphs.length; i++) {
             const glyph = run.glyphs[i];
             const position = run.positions[i];
-            const id = `${font === this.serif ? 'd' : font === this.chineseSerif ? 'c' : font === this.latinBold ? 'b' : font === this.latin ? 'l' : 's'}${glyph.id}`;
+            const id = `${font === this.italicBold ? 'j' : font === this.italic ? 'i' : font === this.serif ? 'd' : font === this.chineseSerif ? 'c' : font === this.latinBold ? 'b' : font === this.latin ? 'l' : 's'}${glyph.id}`;
             if (!this.definitions.has(id))
                 this.definitions.set(id, `<path id="${id}" d="${glyph.path.toSVG()}"/>`);
             parts.push(`<use href="#${id}" transform="translate(${round(x + (offset + position.xOffset) * scale)} ${round(y - position.yOffset * scale)}) scale(${round(scale)} ${round(-scale)})"/>`);
@@ -70943,7 +70954,8 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
             text('IN PUBLIC.', x, y + 56, 20, p.muted);
             return;
         }
-        text('OPEN SOURCE IMPACT', x, y, compact ? 13 : 15, p.muted, {
+        text('Open-source impact', x, y, compact ? 18 : 21, p.muted, {
+            italic: true,
             maxWidth: w
         });
         text(snapshot.rating.grade, x, y + 92, 92, p.accent, {
@@ -71024,7 +71036,7 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
                 maxWidth,
                 shrink: true
             });
-            text(title, titleX, 478, 23, p.muted, { maxWidth: 202 });
+            text(title, titleX, 478, 29, p.muted, { italic: true, maxWidth: 202 });
             text(subtitle, titleX, 507, 17, p.muted, { maxWidth: 202 });
         });
         line(495, 455, 495, 515);
@@ -71033,7 +71045,7 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
         text(label('精选作品', 'Selected work'), 64, 607, 36, p.ink, {
             display: true
         });
-        text(en ? '/ BUILT IN THE OPEN' : '/ SELECTED WORK', en ? 310 : 232, 607, 23, p.muted);
+        text(en ? '/ Built in the open' : '/ Selected work', en ? 310 : 232, 607, 28, p.muted, { italic: true });
         text('GOOD SOFTWARE FOR A BRIGHTER TOMORROW', 1310, 602, 13, p.muted, {
             align: 'right'
         });
@@ -71045,14 +71057,15 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
             const owner = type.fit(`${repo.owner} /`, 22, 180);
             const ownerWidth = type.width(owner, 22);
             text(owner, 144, y, 22, p.muted);
-            text(repo.name, 156 + ownerWidth, y, 23, p.accent, {
+            text(repo.name, 156 + ownerWidth, y, 26, p.accent, {
                 bold: true,
+                italic: true,
                 maxWidth: 366 - ownerWidth
             });
             line(536, y - 21, 536, y + 6, p.accent);
             text(repo.description || label('一个开源项目', 'An open-source project'), 566, y, 21, p.muted, { maxWidth: 452 });
             rect(1058, y - 13, 12, 12, p.accent, 6);
-            text(repo.language, 1086, y, 18, p.muted, { maxWidth: 135 });
+            text(repo.language, 1086, y, 21, p.muted, { italic: true, maxWidth: 135 });
             out.push(`<g transform="translate(1254 ${y - 22})" fill="${p.accent}">${starPaths.map((d) => `<path d="${d}"/>`).join('')}</g>`);
             text(number(repo.stars), 1376, y, 24, p.muted, {
                 align: 'right',
@@ -71110,7 +71123,10 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
                 maxWidth: 177,
                 shrink: true
             });
-            text(title, 224, 413 + i * 70, 16, p.muted, { maxWidth: 170 });
+            text(title, 224, 413 + i * 70, 20, p.muted, {
+                italic: true,
+                maxWidth: 170
+            });
         });
         text(totalScope, 32, 602, 15, p.muted, { maxWidth: 330 });
         line(32, 630, 608, 630, p.accent);
@@ -71118,7 +71134,11 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
         snapshot.featured.forEach((repo, i) => {
             const y = 714 + i * 130;
             text(`${String(i + 1).padStart(2, '0')}  ${repo.owner} /`, 32, y, 15, p.muted, { maxWidth: 390 });
-            text(repo.name, 32, y + 34, 26, p.accent, { maxWidth: 390 });
+            text(repo.name, 32, y + 34, 29, p.accent, {
+                italic: true,
+                bold: true,
+                maxWidth: 390
+            });
             text(`${number(repo.stars)} stars`, 608, y + 32, 18, p.ink, {
                 align: 'right',
                 maxWidth: 158
@@ -71137,8 +71157,13 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
             align: 'right'
         });
     }
+    const paper = theme === 'light'
+        ? ['#fffdf6', '#f7f3e9', '#eae5d8']
+        : ['#243c30', '#182a21', '#101c17'];
+    const backgroundDefs = `<radialGradient id="paper-light" cx="24%" cy="12%" r="110%"><stop offset="0" stop-color="${paper[0]}"/><stop offset=".55" stop-color="${paper[1]}"/><stop offset="1" stop-color="${paper[2]}"/></radialGradient><filter id="paper-grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" stitchTiles="stitch" seed="17"/><feColorMatrix type="saturate" values="0"/></filter>`;
+    const background = `<rect width="${width}" height="${height}" fill="url(#paper-light)"/><rect width="${width}" height="${height}" filter="url(#paper-grain)" opacity="${theme === 'light' ? '.065' : '.045'}"/>`;
     const description = `${name}. ${snapshot.rating.grade}, ${snapshot.rating.score} points. ${snapshot.totals.stars} stars across ${snapshot.totals.repositories} public repositories. ${snapshot.profile.contributions} personal contributions in the past 365 days. ${snapshot.featured.map((repo) => `${repo.fullName}: ${repo.description}`).join('; ')}`;
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title description"><title id="title">${escapeXml(`${name} · Star Track${demo ? ' · Demo data' : ''}`)}</title><desc id="description">${escapeXml(description)}</desc><defs>${type.defs()}</defs><rect width="${width}" height="${height}" fill="${p.bg}"/>${out.join('')}</svg>\n`;
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title description"><title id="title">${escapeXml(`${name} · Star Track${demo ? ' · Demo data' : ''}`)}</title><desc id="description">${escapeXml(description)}</desc><defs>${backgroundDefs}${type.defs()}</defs><rect width="${width}" height="${height}" fill="${p.bg}"/>${background}${out.join('')}</svg>\n`;
 }
 
 const BEGIN = '<!-- BEGIN_GITHUB_STATS -->';

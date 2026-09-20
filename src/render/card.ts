@@ -102,7 +102,8 @@ export function renderCard(
       text('IN PUBLIC.', x, y + 56, 20, p.muted)
       return
     }
-    text('OPEN SOURCE IMPACT', x, y, compact ? 13 : 15, p.muted, {
+    text('Open-source impact', x, y, compact ? 18 : 21, p.muted, {
+      italic: true,
       maxWidth: w
     })
     text(snapshot.rating.grade, x, y + 92, 92, p.accent, {
@@ -217,7 +218,7 @@ export function renderCard(
         maxWidth,
         shrink: true
       })
-      text(title, titleX, 478, 23, p.muted, { maxWidth: 202 })
+      text(title, titleX, 478, 29, p.muted, { italic: true, maxWidth: 202 })
       text(subtitle, titleX, 507, 17, p.muted, { maxWidth: 202 })
     })
     line(495, 455, 495, 515)
@@ -227,11 +228,12 @@ export function renderCard(
       display: true
     })
     text(
-      en ? '/ BUILT IN THE OPEN' : '/ SELECTED WORK',
+      en ? '/ Built in the open' : '/ Selected work',
       en ? 310 : 232,
       607,
-      23,
-      p.muted
+      28,
+      p.muted,
+      { italic: true }
     )
     text('GOOD SOFTWARE FOR A BRIGHTER TOMORROW', 1310, 602, 13, p.muted, {
       align: 'right'
@@ -244,8 +246,9 @@ export function renderCard(
       const owner = type.fit(`${repo.owner} /`, 22, 180)
       const ownerWidth = type.width(owner, 22)
       text(owner, 144, y, 22, p.muted)
-      text(repo.name, 156 + ownerWidth, y, 23, p.accent, {
+      text(repo.name, 156 + ownerWidth, y, 26, p.accent, {
         bold: true,
+        italic: true,
         maxWidth: 366 - ownerWidth
       })
       line(536, y - 21, 536, y + 6, p.accent)
@@ -258,7 +261,7 @@ export function renderCard(
         { maxWidth: 452 }
       )
       rect(1058, y - 13, 12, 12, p.accent, 6)
-      text(repo.language, 1086, y, 18, p.muted, { maxWidth: 135 })
+      text(repo.language, 1086, y, 21, p.muted, { italic: true, maxWidth: 135 })
       out.push(
         `<g transform="translate(1254 ${y - 22})" fill="${p.accent}">${starPaths.map((d) => `<path d="${d}"/>`).join('')}</g>`
       )
@@ -359,7 +362,10 @@ export function renderCard(
         maxWidth: 177,
         shrink: true
       })
-      text(title, 224, 413 + i * 70, 16, p.muted, { maxWidth: 170 })
+      text(title, 224, 413 + i * 70, 20, p.muted, {
+        italic: true,
+        maxWidth: 170
+      })
     })
     text(totalScope, 32, 602, 15, p.muted, { maxWidth: 330 })
     line(32, 630, 608, 630, p.accent)
@@ -374,7 +380,11 @@ export function renderCard(
         p.muted,
         { maxWidth: 390 }
       )
-      text(repo.name, 32, y + 34, 26, p.accent, { maxWidth: 390 })
+      text(repo.name, 32, y + 34, 29, p.accent, {
+        italic: true,
+        bold: true,
+        maxWidth: 390
+      })
       text(`${number(repo.stars)} stars`, 608, y + 32, 18, p.ink, {
         align: 'right',
         maxWidth: 158
@@ -412,6 +422,12 @@ export function renderCard(
       align: 'right'
     })
   }
+  const paper =
+    theme === 'light'
+      ? ['#fffdf6', '#f7f3e9', '#eae5d8']
+      : ['#243c30', '#182a21', '#101c17']
+  const backgroundDefs = `<radialGradient id="paper-light" cx="24%" cy="12%" r="110%"><stop offset="0" stop-color="${paper[0]}"/><stop offset=".55" stop-color="${paper[1]}"/><stop offset="1" stop-color="${paper[2]}"/></radialGradient><filter id="paper-grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" stitchTiles="stitch" seed="17"/><feColorMatrix type="saturate" values="0"/></filter>`
+  const background = `<rect width="${width}" height="${height}" fill="url(#paper-light)"/><rect width="${width}" height="${height}" filter="url(#paper-grain)" opacity="${theme === 'light' ? '.065' : '.045'}"/>`
   const description = `${name}. ${snapshot.rating.grade}, ${snapshot.rating.score} points. ${snapshot.totals.stars} stars across ${snapshot.totals.repositories} public repositories. ${snapshot.profile.contributions} personal contributions in the past 365 days. ${snapshot.featured.map((repo) => `${repo.fullName}: ${repo.description}`).join('; ')}`
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title description"><title id="title">${escapeXml(`${name} · Star Track${demo ? ' · Demo data' : ''}`)}</title><desc id="description">${escapeXml(description)}</desc><defs>${type.defs()}</defs><rect width="${width}" height="${height}" fill="${p.bg}"/>${out.join('')}</svg>\n`
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title description"><title id="title">${escapeXml(`${name} · Star Track${demo ? ' · Demo data' : ''}`)}</title><desc id="description">${escapeXml(description)}</desc><defs>${backgroundDefs}${type.defs()}</defs><rect width="${width}" height="${height}" fill="${p.bg}"/>${background}${out.join('')}</svg>\n`
 }
