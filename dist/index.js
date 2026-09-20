@@ -71080,7 +71080,9 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
         line(64, 634, 1376, 634, p.accent);
         snapshot.featured.forEach((repo, index) => {
             const y = 675 + index * 66;
-            text(String(index + 1).padStart(2, '0'), 64, y, 23, p.muted);
+            text(String(index + 1).padStart(2, '0'), 64, y, 26, p.muted, {
+                italic: true
+            });
             const owner = type.fit(`${repo.owner} /`, 22, 180);
             const ownerWidth = type.width(owner, 22);
             text(owner, 144, y, 22, p.muted);
@@ -71094,7 +71096,9 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
             rect(1058, y - 13, 12, 12, p.accent, 6);
             text(repo.language, 1086, y, 21, p.muted, { italic: true, maxWidth: 135 });
             out.push(`<g transform="translate(1254 ${y - 22})" fill="${p.accent}">${starPaths.map((d) => `<path d="${d}"/>`).join('')}</g>`);
-            text(number(repo.stars), 1376, y, 24, p.ink, {
+            text(number(repo.stars), 1376, y, 27, p.ink, {
+                italic: true,
+                bold: true,
                 align: 'right',
                 maxWidth: 88,
                 shrink: true
@@ -71162,16 +71166,21 @@ function renderCard(snapshot, config, theme, compact = false, demo = false) {
         text(label('精选作品', 'Selected work'), 32, 675, 27, p.ink);
         snapshot.featured.forEach((repo, i) => {
             const y = 714 + i * 130;
-            text(`${String(i + 1).padStart(2, '0')}  ${repo.owner} /`, 32, y, 15, p.muted, { maxWidth: 390 });
+            text(String(i + 1).padStart(2, '0'), 32, y, 18, p.muted, { italic: true });
+            text(`${repo.owner} /`, 64, y, 15, p.muted, { maxWidth: 358 });
             text(repo.name, 32, y + 34, 29, p.accent, {
                 italic: true,
                 bold: true,
                 maxWidth: 390
             });
-            text(`${number(repo.stars)} stars`, 608, y + 32, 18, p.ink, {
+            text(number(repo.stars), 559, y + 32, 24, p.ink, {
+                italic: true,
+                bold: true,
                 align: 'right',
-                maxWidth: 158
+                maxWidth: 109,
+                shrink: true
             });
+            text('stars', 608, y + 32, 17, p.muted, { italic: true, align: 'right' });
             text(repo.description || label('一个开源项目', 'An open-source project'), 32, y + 70, 20, p.muted, { prose: true, maxWidth: 576 });
             text(repo.language, 32, y + 96, 14, p.muted);
             line(32, y + 111, 608);
