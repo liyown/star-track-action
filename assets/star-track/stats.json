@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
   "sourceKey": "78d9b481aa83d5ec",
-  "collectedAt": "2026-09-27T06:11:58.245Z",
+  "collectedAt": "2026-10-04T06:36:50.877Z",
   "window": {
-    "from": "2025-09-27T06:11:58.245Z",
-    "to": "2026-09-27T06:11:58.245Z"
+    "from": "2025-10-04T06:36:50.877Z",
+    "to": "2026-10-04T06:36:50.877Z"
   },
   "scope": {
     "username": "liyown",
@@ -14,7 +14,7 @@
     "login": "liyown",
     "name": "Evan",
     "createdAt": "2019-09-19T05:18:46Z",
-    "followers": 49,
+    "followers": 50,
     "following": 5,
     "contributedTo": 32,
     "contributions": 404,
@@ -23,34 +23,6 @@
     "pullRequests": 18,
     "reviews": 1,
     "calendar": [
-      {
-        "date": "2025-09-28",
-        "count": 0
-      },
-      {
-        "date": "2025-09-29",
-        "count": 0
-      },
-      {
-        "date": "2025-09-30",
-        "count": 0
-      },
-      {
-        "date": "2025-10-01",
-        "count": 0
-      },
-      {
-        "date": "2025-10-02",
-        "count": 0
-      },
-      {
-        "date": "2025-10-03",
-        "count": 0
-      },
-      {
-        "date": "2025-10-04",
-        "count": 0
-      },
       {
         "date": "2025-10-05",
         "count": 0
@@ -1482,6 +1454,34 @@
       {
         "date": "2026-09-27",
         "count": 0
+      },
+      {
+        "date": "2026-09-28",
+        "count": 0
+      },
+      {
+        "date": "2026-09-29",
+        "count": 0
+      },
+      {
+        "date": "2026-09-30",
+        "count": 0
+      },
+      {
+        "date": "2026-10-01",
+        "count": 0
+      },
+      {
+        "date": "2026-10-02",
+        "count": 0
+      },
+      {
+        "date": "2026-10-03",
+        "count": 0
+      },
+      {
+        "date": "2026-10-04",
+        "count": 0
       }
     ]
   },
@@ -1583,8 +1583,8 @@
       "description": "TrendPublish: 全自动 AI 内容生成与发布系统 | 微信公众号自动化 | 多源数据抓取 (Twitter/X、网站) | DeepseekAI、千问、讯飞模型 | 智能内容分析排序 | 定时发布 | 多模板支持 | Node.js | TypeScript | AI 技术趋势跟踪工具",
       "url": "https://github.com/liyown/ai-trend-publish",
       "language": "TypeScript",
-      "stars": 3194,
-      "forks": 446,
+      "stars": 3198,
+      "forks": 447,
       "watchers": 22,
       "issues": 52,
       "closedIssues": 50,
@@ -1673,7 +1673,7 @@
       "description": "Build, test, and ship typed DeepSeek Harness plugins — framework, scaffolding, and a verified community Hub.",
       "url": "https://github.com/liyown/dshx",
       "language": "TypeScript",
-      "stars": 13,
+      "stars": 15,
       "forks": 1,
       "watchers": 1,
       "issues": 1,
@@ -2413,8 +2413,8 @@
       "description": "TrendPublish: 全自动 AI 内容生成与发布系统 | 微信公众号自动化 | 多源数据抓取 (Twitter/X、网站) | DeepseekAI、千问、讯飞模型 | 智能内容分析排序 | 定时发布 | 多模板支持 | Node.js | TypeScript | AI 技术趋势跟踪工具",
       "url": "https://github.com/liyown/ai-trend-publish",
       "language": "TypeScript",
-      "stars": 3194,
-      "forks": 446,
+      "stars": 3198,
+      "forks": 447,
       "watchers": 22,
       "issues": 52,
       "closedIssues": 50,
@@ -2462,9 +2462,9 @@
     }
   ],
   "totals": {
-    "stars": 4188,
+    "stars": 4194,
     "repositories": 51,
-    "forks": 563,
+    "forks": 564,
     "watchers": 62,
     "issues": 68,
     "pullRequests": 55,
@@ -2486,19 +2486,19 @@
   "rating": {
     "version": "v2",
     "grade": "SS",
-    "score": 2998,
+    "score": 3002,
     "nextGrade": "SS+",
     "nextScore": 3500,
-    "progress": 0.6653333333333333,
+    "progress": 0.668,
     "breakdown": {
       "repositories": 51,
-      "stars": 2094,
+      "stars": 2097,
       "commits": 35.1,
       "issues": 0.2,
       "pullRequests": 1.8,
-      "followers": 14.7,
+      "followers": 15,
       "contributedRepositories": 64,
-      "forks": 112.6,
+      "forks": 112.8,
       "starMilestone": 500,
       "averageStars": 100,
       "longevity": 25
