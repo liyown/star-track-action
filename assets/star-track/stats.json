@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
   "sourceKey": "78d9b481aa83d5ec",
-  "collectedAt": "2026-10-04T06:36:50.877Z",
+  "collectedAt": "2026-10-11T06:47:45.449Z",
   "window": {
-    "from": "2025-10-04T06:36:50.877Z",
-    "to": "2026-10-04T06:36:50.877Z"
+    "from": "2025-10-11T06:47:45.449Z",
+    "to": "2026-10-11T06:47:45.449Z"
   },
   "scope": {
     "username": "liyown",
@@ -15,7 +15,7 @@
     "name": "Evan",
     "createdAt": "2019-09-19T05:18:46Z",
     "followers": 50,
-    "following": 5,
+    "following": 4,
     "contributedTo": 32,
     "contributions": 404,
     "commits": 351,
@@ -23,34 +23,6 @@
     "pullRequests": 18,
     "reviews": 1,
     "calendar": [
-      {
-        "date": "2025-10-05",
-        "count": 0
-      },
-      {
-        "date": "2025-10-06",
-        "count": 0
-      },
-      {
-        "date": "2025-10-07",
-        "count": 0
-      },
-      {
-        "date": "2025-10-08",
-        "count": 0
-      },
-      {
-        "date": "2025-10-09",
-        "count": 0
-      },
-      {
-        "date": "2025-10-10",
-        "count": 0
-      },
-      {
-        "date": "2025-10-11",
-        "count": 0
-      },
       {
         "date": "2025-10-12",
         "count": 0
@@ -1482,6 +1454,34 @@
       {
         "date": "2026-10-04",
         "count": 0
+      },
+      {
+        "date": "2026-10-05",
+        "count": 0
+      },
+      {
+        "date": "2026-10-06",
+        "count": 0
+      },
+      {
+        "date": "2026-10-07",
+        "count": 0
+      },
+      {
+        "date": "2026-10-08",
+        "count": 0
+      },
+      {
+        "date": "2026-10-09",
+        "count": 0
+      },
+      {
+        "date": "2026-10-10",
+        "count": 0
+      },
+      {
+        "date": "2026-10-11",
+        "count": 0
       }
     ]
   },
@@ -1583,8 +1583,8 @@
       "description": "TrendPublish: 全自动 AI 内容生成与发布系统 | 微信公众号自动化 | 多源数据抓取 (Twitter/X、网站) | DeepseekAI、千问、讯飞模型 | 智能内容分析排序 | 定时发布 | 多模板支持 | Node.js | TypeScript | AI 技术趋势跟踪工具",
       "url": "https://github.com/liyown/ai-trend-publish",
       "language": "TypeScript",
-      "stars": 3198,
-      "forks": 447,
+      "stars": 3201,
+      "forks": 448,
       "watchers": 22,
       "issues": 52,
       "closedIssues": 50,
@@ -1673,7 +1673,7 @@
       "description": "Build, test, and ship typed DeepSeek Harness plugins — framework, scaffolding, and a verified community Hub.",
       "url": "https://github.com/liyown/dshx",
       "language": "TypeScript",
-      "stars": 15,
+      "stars": 14,
       "forks": 1,
       "watchers": 1,
       "issues": 1,
@@ -1889,7 +1889,7 @@
       "description": "A Markdown rendering engine that generates paginated PNG and SVG output — no browser, no Chromium, no DOM.",
       "url": "https://github.com/liyown/marknative",
       "language": "TypeScript",
-      "stars": 659,
+      "stars": 657,
       "forks": 33,
       "watchers": 4,
       "issues": 4,
@@ -2393,7 +2393,7 @@
       "description": "一套规范驱动 AI 的小红书运营系统——输入主题，AI 帮你写选题、生成文案、设计封面、分析数据、复盘、沉淀知识库、文章系列续写、自动优化等等",
       "url": "https://github.com/liyown/XHSSpec",
       "language": "TypeScript",
-      "stars": 45,
+      "stars": 46,
       "forks": 2,
       "watchers": 0,
       "issues": 0,
@@ -2413,8 +2413,8 @@
       "description": "TrendPublish: 全自动 AI 内容生成与发布系统 | 微信公众号自动化 | 多源数据抓取 (Twitter/X、网站) | DeepseekAI、千问、讯飞模型 | 智能内容分析排序 | 定时发布 | 多模板支持 | Node.js | TypeScript | AI 技术趋势跟踪工具",
       "url": "https://github.com/liyown/ai-trend-publish",
       "language": "TypeScript",
-      "stars": 3198,
-      "forks": 447,
+      "stars": 3201,
+      "forks": 448,
       "watchers": 22,
       "issues": 52,
       "closedIssues": 50,
@@ -2431,7 +2431,7 @@
       "description": "A Markdown rendering engine that generates paginated PNG and SVG output — no browser, no Chromium, no DOM.",
       "url": "https://github.com/liyown/marknative",
       "language": "TypeScript",
-      "stars": 659,
+      "stars": 657,
       "forks": 33,
       "watchers": 4,
       "issues": 4,
@@ -2462,9 +2462,9 @@
     }
   ],
   "totals": {
-    "stars": 4194,
+    "stars": 4195,
     "repositories": 51,
-    "forks": 564,
+    "forks": 565,
     "watchers": 62,
     "issues": 68,
     "pullRequests": 55,
@@ -2486,19 +2486,19 @@
   "rating": {
     "version": "v2",
     "grade": "SS",
-    "score": 3002,
+    "score": 3003,
     "nextGrade": "SS+",
     "nextScore": 3500,
-    "progress": 0.668,
+    "progress": 0.6686666666666666,
     "breakdown": {
       "repositories": 51,
-      "stars": 2097,
+      "stars": 2097.5,
       "commits": 35.1,
       "issues": 0.2,
       "pullRequests": 1.8,
       "followers": 15,
       "contributedRepositories": 64,
-      "forks": 112.8,
+      "forks": 113,
       "starMilestone": 500,
       "averageStars": 100,
       "longevity": 25
