@@ -13,10 +13,10 @@ Action：收集个人与组织的公开仓库数据，生成完整的 SVG 卡片
   <source media="(prefers-color-scheme: dark) and (max-width: 640px)" srcset="assets/star-track/profile-dark-compact.svg" />
   <source media="(max-width: 640px)" srcset="assets/star-track/profile-light-compact.svg" />
   <source media="(prefers-color-scheme: dark)" srcset="assets/star-track/profile-dark.svg" />
-  <img src="assets/star-track/profile-light.svg" alt="Liuyaowen: 4202 stars, 54 repositories, 413 contributions, SS (3019). Updated 2026-10-18 UTC." width="100%" />
+  <img src="assets/star-track/profile-light.svg" alt="Liuyaowen: 6915 stars, 61 repositories, 483 contributions, SS+ (4985). Updated 2026-10-25 UTC." width="100%" />
 </picture>
 
-[liyown/ai-trend-publish](https://github.com/liyown/ai-trend-publish) · [liyown/marknative](https://github.com/liyown/marknative) · [liyown/ai-navigation](https://github.com/liyown/ai-navigation)
+[liyown/ai-trend-publish](https://github.com/liyown/ai-trend-publish) · [Afilmory/afilmory](https://github.com/Afilmory/afilmory) · [liyown/marknative](https://github.com/liyown/marknative)
 
 <details>
 <summary>查看统计与评分明细</summary>

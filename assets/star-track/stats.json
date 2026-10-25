@@ -1,14 +1,16 @@
 {
   "schemaVersion": 2,
   "sourceKey": "78d9b481aa83d5ec",
-  "collectedAt": "2026-10-18T05:24:50.646Z",
+  "collectedAt": "2026-10-25T05:40:11.498Z",
   "window": {
-    "from": "2025-10-18T05:24:50.646Z",
-    "to": "2026-10-18T05:24:50.646Z"
+    "from": "2025-10-25T05:40:11.498Z",
+    "to": "2026-10-25T05:40:11.498Z"
   },
   "scope": {
     "username": "liyown",
-    "organizations": []
+    "organizations": [
+      "afilmory"
+    ]
   },
   "profile": {
     "login": "liyown",
@@ -16,41 +18,13 @@
     "createdAt": "2019-09-19T05:18:46Z",
     "followers": 49,
     "following": 4,
-    "contributedTo": 37,
-    "contributions": 413,
-    "commits": 355,
-    "issues": 5,
-    "pullRequests": 18,
+    "contributedTo": 48,
+    "contributions": 483,
+    "commits": 406,
+    "issues": 6,
+    "pullRequests": 28,
     "reviews": 1,
     "calendar": [
-      {
-        "date": "2025-10-19",
-        "count": 0
-      },
-      {
-        "date": "2025-10-20",
-        "count": 0
-      },
-      {
-        "date": "2025-10-21",
-        "count": 0
-      },
-      {
-        "date": "2025-10-22",
-        "count": 0
-      },
-      {
-        "date": "2025-10-23",
-        "count": 0
-      },
-      {
-        "date": "2025-10-24",
-        "count": 0
-      },
-      {
-        "date": "2025-10-25",
-        "count": 0
-      },
       {
         "date": "2025-10-26",
         "count": 0
@@ -1482,10 +1456,146 @@
       {
         "date": "2026-10-18",
         "count": 0
+      },
+      {
+        "date": "2026-10-19",
+        "count": 6
+      },
+      {
+        "date": "2026-10-20",
+        "count": 6
+      },
+      {
+        "date": "2026-10-21",
+        "count": 20
+      },
+      {
+        "date": "2026-10-22",
+        "count": 9
+      },
+      {
+        "date": "2026-10-23",
+        "count": 29
+      },
+      {
+        "date": "2026-10-24",
+        "count": 0
+      },
+      {
+        "date": "2026-10-25",
+        "count": 0
       }
     ]
   },
   "repositories": [
+    {
+      "name": ".github",
+      "owner": "Afilmory",
+      "fullName": "Afilmory/.github",
+      "description": "",
+      "url": "https://github.com/Afilmory/.github",
+      "language": "—",
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "closedIssues": 0,
+      "pullRequests": 0,
+      "mergedPullRequests": 0,
+      "isFork": false,
+      "isArchived": false,
+      "createdAt": "2025-06-12T06:04:37Z"
+    },
+    {
+      "name": "action",
+      "owner": "Afilmory",
+      "fullName": "Afilmory/action",
+      "description": "Deploy Afilmory via Github Action",
+      "url": "https://github.com/Afilmory/action",
+      "language": "—",
+      "stars": 0,
+      "forks": 2,
+      "watchers": 0,
+      "issues": 0,
+      "closedIssues": 0,
+      "pullRequests": 0,
+      "mergedPullRequests": 0,
+      "isFork": false,
+      "isArchived": false,
+      "createdAt": "2025-10-22T09:09:01Z"
+    },
+    {
+      "name": "afilmory",
+      "owner": "Afilmory",
+      "fullName": "Afilmory/afilmory",
+      "description": "Modern photo gallery for photographers, with S3/GitHub sync, EXIF details, maps, and a WebGL viewer.",
+      "url": "https://github.com/Afilmory/afilmory",
+      "language": "TypeScript",
+      "stars": 2660,
+      "forks": 331,
+      "watchers": 5,
+      "issues": 119,
+      "closedIssues": 84,
+      "pullRequests": 178,
+      "mergedPullRequests": 146,
+      "isFork": false,
+      "isArchived": false,
+      "createdAt": "2025-06-05T05:16:03Z"
+    },
+    {
+      "name": "assets",
+      "owner": "Afilmory",
+      "fullName": "Afilmory/assets",
+      "description": "",
+      "url": "https://github.com/Afilmory/assets",
+      "language": "—",
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "closedIssues": 0,
+      "pullRequests": 0,
+      "mergedPullRequests": 0,
+      "isFork": false,
+      "isArchived": false,
+      "createdAt": "2025-06-11T08:39:24Z"
+    },
+    {
+      "name": "demo-photos",
+      "owner": "Afilmory",
+      "fullName": "Afilmory/demo-photos",
+      "description": "",
+      "url": "https://github.com/Afilmory/demo-photos",
+      "language": "—",
+      "stars": 0,
+      "forks": 1,
+      "watchers": 0,
+      "issues": 0,
+      "closedIssues": 0,
+      "pullRequests": 2,
+      "mergedPullRequests": 2,
+      "isFork": false,
+      "isArchived": false,
+      "createdAt": "2025-11-10T17:36:49Z"
+    },
+    {
+      "name": "docker",
+      "owner": "Afilmory",
+      "fullName": "Afilmory/docker",
+      "description": "",
+      "url": "https://github.com/Afilmory/docker",
+      "language": "Dockerfile",
+      "stars": 46,
+      "forks": 32,
+      "watchers": 0,
+      "issues": 7,
+      "closedIssues": 2,
+      "pullRequests": 7,
+      "mergedPullRequests": 5,
+      "isFork": false,
+      "isArchived": false,
+      "createdAt": "2025-06-11T06:37:12Z"
+    },
     {
       "name": "1panel-cli",
       "owner": "liyown",
@@ -1523,6 +1633,24 @@
       "createdAt": "2024-04-19T02:12:08Z"
     },
     {
+      "name": "afilmory-edge",
+      "owner": "liyown",
+      "fullName": "liyown/afilmory-edge",
+      "description": "A personal, Cloudflare-native photo gallery derived from Afilmory",
+      "url": "https://github.com/liyown/afilmory-edge",
+      "language": "TypeScript",
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "closedIssues": 0,
+      "pullRequests": 0,
+      "mergedPullRequests": 0,
+      "isFork": false,
+      "isArchived": false,
+      "createdAt": "2026-10-19T09:46:05Z"
+    },
+    {
       "name": "ai-nav-extension",
       "owner": "liyown",
       "fullName": "liyown/ai-nav-extension",
@@ -1547,7 +1675,7 @@
       "description": "AI 导航是一个现代化的人工智能网站导航系统，致力于帮助用户发现、分享和管理优质的 AI 工具与资源。项目采用最新的 Web 技术栈构建，提供流畅的用户体验和强大的管理功能。",
       "url": "https://github.com/liyown/ai-navigation",
       "language": "TypeScript",
-      "stars": 130,
+      "stars": 131,
       "forks": 70,
       "watchers": 2,
       "issues": 3,
@@ -1583,8 +1711,8 @@
       "description": "TrendPublish: 全自动 AI 内容生成与发布系统 | 微信公众号自动化 | 多源数据抓取 (Twitter/X、网站) | DeepseekAI、千问、讯飞模型 | 智能内容分析排序 | 定时发布 | 多模板支持 | Node.js | TypeScript | AI 技术趋势跟踪工具",
       "url": "https://github.com/liyown/ai-trend-publish",
       "language": "TypeScript",
-      "stars": 3207,
-      "forks": 449,
+      "stars": 3218,
+      "forks": 452,
       "watchers": 22,
       "issues": 53,
       "closedIssues": 50,
@@ -1673,12 +1801,12 @@
       "description": "Build, test, and ship typed DeepSeek Harness plugins — framework, scaffolding, and a verified community Hub.",
       "url": "https://github.com/liyown/dshx",
       "language": "TypeScript",
-      "stars": 13,
+      "stars": 7,
       "forks": 0,
-      "watchers": 1,
+      "watchers": 0,
       "issues": 1,
       "closedIssues": 0,
-      "pullRequests": 6,
+      "pullRequests": 7,
       "mergedPullRequests": 4,
       "isFork": false,
       "isArchived": false,
@@ -2267,7 +2395,7 @@
       "description": "自动为你的README生成一张的GitHub统计卡片，通过这个GitHub Action展示你的开源贡献和活动数据",
       "url": "https://github.com/liyown/star-track-action",
       "language": "TypeScript",
-      "stars": 2,
+      "stars": 3,
       "forks": 0,
       "watchers": 0,
       "issues": 0,
@@ -2467,8 +2595,8 @@
       "description": "TrendPublish: 全自动 AI 内容生成与发布系统 | 微信公众号自动化 | 多源数据抓取 (Twitter/X、网站) | DeepseekAI、千问、讯飞模型 | 智能内容分析排序 | 定时发布 | 多模板支持 | Node.js | TypeScript | AI 技术趋势跟踪工具",
       "url": "https://github.com/liyown/ai-trend-publish",
       "language": "TypeScript",
-      "stars": 3207,
-      "forks": 449,
+      "stars": 3218,
+      "forks": 452,
       "watchers": 22,
       "issues": 53,
       "closedIssues": 50,
@@ -2477,6 +2605,24 @@
       "isFork": false,
       "isArchived": false,
       "createdAt": "2025-01-13T12:32:39Z"
+    },
+    {
+      "name": "afilmory",
+      "owner": "Afilmory",
+      "fullName": "Afilmory/afilmory",
+      "description": "Modern photo gallery for photographers, with S3/GitHub sync, EXIF details, maps, and a WebGL viewer.",
+      "url": "https://github.com/Afilmory/afilmory",
+      "language": "TypeScript",
+      "stars": 2660,
+      "forks": 331,
+      "watchers": 5,
+      "issues": 119,
+      "closedIssues": 84,
+      "pullRequests": 178,
+      "mergedPullRequests": 146,
+      "isFork": false,
+      "isArchived": false,
+      "createdAt": "2025-06-05T05:16:03Z"
     },
     {
       "name": "marknative",
@@ -2495,41 +2641,24 @@
       "isFork": false,
       "isArchived": false,
       "createdAt": "2026-03-30T06:11:54Z"
-    },
-    {
-      "name": "ai-navigation",
-      "owner": "liyown",
-      "fullName": "liyown/ai-navigation",
-      "description": "AI 导航是一个现代化的人工智能网站导航系统，致力于帮助用户发现、分享和管理优质的 AI 工具与资源。项目采用最新的 Web 技术栈构建，提供流畅的用户体验和强大的管理功能。",
-      "url": "https://github.com/liyown/ai-navigation",
-      "language": "TypeScript",
-      "stars": 130,
-      "forks": 70,
-      "watchers": 2,
-      "issues": 3,
-      "closedIssues": 1,
-      "pullRequests": 6,
-      "mergedPullRequests": 4,
-      "isFork": false,
-      "isArchived": false,
-      "createdAt": "2024-12-03T03:51:51Z"
     }
   ],
   "totals": {
-    "stars": 4202,
-    "repositories": 54,
-    "forks": 565,
-    "watchers": 62,
-    "issues": 69,
-    "pullRequests": 55,
-    "issueCloseRate": 91.30434782608695,
-    "prMergeRate": 52.72727272727272,
+    "stars": 6915,
+    "repositories": 61,
+    "forks": 934,
+    "watchers": 66,
+    "issues": 195,
+    "pullRequests": 243,
+    "issueCloseRate": 76.41025641025641,
+    "prMergeRate": 74.8971193415638,
     "topLanguage": "TypeScript",
     "languages": {
+      "TypeScript": 15,
+      "Dockerfile": 1,
       "Go": 5,
       "Python": 10,
       "JavaScript": 6,
-      "TypeScript": 13,
       "Ruby": 1,
       "Rust": 1,
       "Shell": 1,
@@ -2540,21 +2669,21 @@
   },
   "rating": {
     "version": "v2",
-    "grade": "SS",
-    "score": 3019,
-    "nextGrade": "SS+",
-    "nextScore": 3500,
-    "progress": 0.6793333333333333,
+    "grade": "SS+",
+    "score": 4985,
+    "nextGrade": "SSS",
+    "nextScore": 5000,
+    "progress": 0.99,
     "breakdown": {
-      "repositories": 54,
-      "stars": 2101,
-      "commits": 35.5,
-      "issues": 0.25,
-      "pullRequests": 1.8,
+      "repositories": 61,
+      "stars": 3457.5,
+      "commits": 40.6,
+      "issues": 0.3,
+      "pullRequests": 2.8,
       "followers": 14.7,
-      "contributedRepositories": 74,
-      "forks": 113,
-      "starMilestone": 500,
+      "contributedRepositories": 96,
+      "forks": 186.8,
+      "starMilestone": 1000,
       "averageStars": 100,
       "longevity": 25
     }
